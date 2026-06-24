@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WorkTrack Admin Dashboard</title>
+	<style>
+		body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+		h1 { color: #333; }
+		table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+		th { background: #1f7c33; color: white; padding: 12px; text-align: left; }
+		td { padding: 12px; border-bottom: 1px solid #ddd; color: #333; }
+		tr:hover { background: #f1f1f1; }
+		.badge { background: #1f7c33; color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+		.stats { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+	</style>
+</head>
+<body>
+	<h1>WorkTrack - Admin Dashboard</h1>
+	<div class = "stats>
+		<strong>Total Check-ins:</strong> {{ records|length }}
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Employee ID</th>
+				<th>Name</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for r in records %}
+			<tr>
+				<td><span class="badge">#{{ r.id }}</span></td>
+				<td>{{ r.employee_id }}</td>
+				<td>{{ r.employee_name }}</td>
+				<td>{{ r.latitude }}</td>
+				<td>{{ r.longitude }}</td>
+				<td>{{ r.checkin_time }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<script>
+		setTimeout(() => location.reload(), 5000);
+	</script>
+</body>
+</html>
